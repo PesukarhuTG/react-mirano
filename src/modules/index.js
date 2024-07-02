@@ -7,3 +7,4 @@ export { default as CartItem } from './CartItem/CartItem';
 export { default as Hero } from './Hero/Hero';
 export { default as Filter } from './Filter/Filter';
 export { default as Subscribe } from './Subscribe/Subscribe';
+export { default as Order } from './Order/Order';

@@ -1,5 +1,5 @@
-@use "../varibles" as *;
-@use "../media" as *;
+@use '../../scss/varibles' as *;
+@use '../../scss/media' as *;
 
 .order {
   position: fixed;
@@ -121,7 +121,7 @@
     transform: translateY(-50%);
 
     &:before {
-      content: "";
+      content: '';
       position: absolute;
       inset: 0;
       display: block;
@@ -130,7 +130,7 @@
     }
 
     &:after {
-      content: "";
+      content: '';
       position: absolute;
       top: 50%;
       left: 50%;
@@ -160,7 +160,7 @@
     width: min-content;
 
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       top: 50%;
       right: 16px;
@@ -168,7 +168,7 @@
       display: block;
       width: 8px;
       height: 8px;
-      background-image: url("/img/arrow-down.svg");
+      background-image: url('/img/arrow-down.svg');
       background-repeat: no-repeat;
       background-position: center;
       background-size: contain;

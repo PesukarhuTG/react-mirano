@@ -1,5 +1,5 @@
-@use "../varibles" as *;
-@use "../media" as *;
+@use '../../scss/varibles' as *;
+@use '../../scss/media' as *;
 
 @keyframes slideDown {
   to {
@@ -34,15 +34,15 @@
 
     @include tablet {
       grid-template-areas:
-        ". logo cart"
-        "form form form";
+        '. logo cart'
+        'form form form';
     }
 
     @include mobile {
       gap: 24px;
       grid-template-areas:
-        "logo logo cart"
-        "form form form";
+        'logo logo cart'
+        'form form form';
     }
   }
 
@@ -107,7 +107,7 @@
   }
 
   &__cart-button {
-    background: url("/img/cart.svg") no-repeat center/contain;
+    background: url('/img/cart.svg') no-repeat center/contain;
     width: 28px;
     height: 28px;
     justify-self: end;

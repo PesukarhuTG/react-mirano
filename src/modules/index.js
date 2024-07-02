@@ -6,3 +6,4 @@ export { default as Card } from './Card/Card';
 export { default as CartItem } from './CartItem/CartItem';
 export { default as Hero } from './Hero/Hero';
 export { default as Filter } from './Filter/Filter';
+export { default as Subscribe } from './Subscribe/Subscribe';

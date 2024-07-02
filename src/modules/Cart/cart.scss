@@ -1,5 +1,5 @@
-@use "../varibles" as *;
-@use "../media" as *;
+@use '../../scss/varibles' as *;
+@use '../../scss/media' as *;
 
 .cart {
   align-self: start;
@@ -58,12 +58,9 @@
     font-size: 28px;
   }
 
-  &__close {
-  }
-
   &__date-delivery {
     padding-left: 20px;
-    background-image: url("/img/delivery.svg");
+    background-image: url('/img/delivery.svg');
     background-repeat: no-repeat;
     background-position: left bottom;
     font-size: 14px;
@@ -87,8 +84,8 @@
     gap: 8px 12px;
     align-items: center;
     grid-template-areas:
-      "image title title"
-      "image counter price";
+      'image title title'
+      'image counter price';
 
     &:last-child {
       border-bottom-color: transparent;

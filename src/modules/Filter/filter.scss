@@ -1,5 +1,5 @@
-@use "../varibles" as *;
-@use "../media" as *;
+@use '../../scss/varibles' as *;
+@use '../../scss/media' as *;
 
 .filter {
   &__form {
@@ -54,15 +54,15 @@
     }
 
     &_flower {
-      background-image: url("/img/flowers.png");
+      background-image: url('/img/flowers.png');
     }
 
     &_toys {
-      background-image: url("/img/bear-toy.png");
+      background-image: url('/img/bear-toy.png');
     }
 
     &_postcard {
-      background-image: url("/img/postcard.png");
+      background-image: url('/img/postcard.png');
     }
 
     &:hover {
@@ -89,10 +89,10 @@
     gap: 8px;
 
     &:after {
-      content: "";
+      content: '';
       width: 8px;
       height: 8px;
-      background: url("/img/arrow.svg") no-repeat center/contain;
+      background: url('/img/arrow.svg') no-repeat center/contain;
     }
   }
 
@@ -129,9 +129,6 @@
     @include mobile {
       width: 80px;
     }
-  }
-
-  &__type-list {
   }
 
   &__type-item {

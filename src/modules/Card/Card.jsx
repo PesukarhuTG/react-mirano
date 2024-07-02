@@ -1,3 +1,5 @@
+import './card.scss';
+
 const Card = ({ img, title, dateDelivery, price }) => {
   return (
     <article className="goods__card card">

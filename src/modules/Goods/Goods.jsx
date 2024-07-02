@@ -1,3 +1,4 @@
+import './goods.scss';
 import { Cart, Card } from '../';
 import { goodsArray } from '../../goodsArray.js';
 

@@ -1,5 +1,5 @@
-@use "../varibles" as *;
-@use "../media" as *;
+@use '@scss/varibles' as *;
+@use '@scss/media' as *;
 
 .preload {
   display: none;
@@ -15,7 +15,7 @@
   }
 
   &:after {
-    content: "";
+    content: '';
     display: block;
     position: absolute;
     border: 5px solid $green;

@@ -11,7 +11,7 @@ const Choices = ({ btnLabel, children }) => {
   return (
     <div className={style.choices}>
       <button
-        className={style.choices__btn}
+        className={isOpen ? style.choices__btn_open : style.choices__btn}
         type="button"
         onClick={handleToggle}
       >

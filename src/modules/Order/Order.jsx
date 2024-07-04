@@ -13,6 +13,12 @@ const Order = () => {
     dispatch(toggleModal());
   };
 
+  const checkClickTarget = ({ target, currentTarget }) => {
+    if (target === currentTarget) {
+      dispatch(toggleModal());
+    }
+  };
+
   if (!isOpen) return null;
 
   if (isOrder) {
@@ -31,7 +37,7 @@ const Order = () => {
     );
   }
   return (
-    <div className={style.order} onClick={handlerModalClose}>
+    <div className={style.order} onClick={checkClickTarget}>
       <div className={style.wrapper}>
         <h2 className={style.title}>Оформить заказ</h2>
         <form className={style.form} id="order">

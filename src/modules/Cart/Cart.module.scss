@@ -77,22 +77,6 @@
   flex-grow: 1;
 }
 
-.item {
-  padding: 16px 0;
-  border-bottom: 1px solid rgba($dark, 0.04);
-  display: grid;
-  grid-template-columns: 54px 1fr min-content;
-  gap: 8px 12px;
-  align-items: center;
-  grid-template-areas:
-    'image title title'
-    'image counter price';
-
-  &:last-child {
-    border-bottom-color: transparent;
-  }
-}
-
 .footer {
   display: flex;
   align-items: center;

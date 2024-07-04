@@ -44,9 +44,7 @@ const Cart = () => {
 
         <ul className={style.list}>
           {goodsArray.map((item) => (
-            <li className={style.item} key={item.id}>
-              <CartItem {...item} />
-            </li>
+            <CartItem key={item.id} {...item} />
           ))}
         </ul>
 

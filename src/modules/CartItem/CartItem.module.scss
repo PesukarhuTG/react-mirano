@@ -1,6 +1,22 @@
 @use '@scss/varibles' as *;
 @use '@scss/media' as *;
 
+.item {
+  padding: 16px 0;
+  border-bottom: 1px solid rgba($dark, 0.04);
+  display: grid;
+  grid-template-columns: 54px 1fr min-content;
+  gap: 8px 12px;
+  align-items: center;
+  grid-template-areas:
+    'image title title'
+    'image counter price';
+
+  &:last-child {
+    border-bottom-color: transparent;
+  }
+}
+
 .img {
   align-self: start;
   grid-area: image;
@@ -10,7 +26,7 @@
   object-fit: cover;
 }
 
-.itemTitle {
+.title {
   grid-area: title;
   font-weight: 400;
   font-size: 14px;

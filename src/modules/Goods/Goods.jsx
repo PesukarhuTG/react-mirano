@@ -1,17 +1,18 @@
-import './goods.scss';
+import style from './Goods.module.scss';
+import cn from 'classnames';
 import { Cart, Card } from '../';
 import { goodsArray } from '../../goodsArray.js';
 
 const Goods = () => {
   return (
-    <section className="goods">
-      <div className="container goods__container">
-        <div className="goods__box">
-          <h2 className="goods__title">Цветы</h2>
+    <section className={style.goods}>
+      <div className={cn('container', style.container)}>
+        <div className={style.box}>
+          <h2 className={style.title}>Цветы</h2>
 
-          <ul className="goods__list">
+          <ul className={style.list}>
             {goodsArray.map((item) => (
-              <li className="goods__item" key={item.id}>
+              <li className={style.item} key={item.id}>
                 <Card {...item} />
               </li>
             ))}

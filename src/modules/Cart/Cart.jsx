@@ -1,4 +1,5 @@
-import './cart.scss';
+import style from './Cart.module.scss';
+import cn from 'classnames';
 import { goodsArray } from '../../goodsArray.js';
 import { CartItem } from '../';
 
@@ -6,12 +7,12 @@ const Cart = () => {
   goodsArray.length = 3;
 
   return (
-    <section className="cart cart_open">
-      <div className="cart__container">
-        <div className="cart__header">
-          <h3 className="cart__title">Ваш заказ</h3>
+    <section className={cn(style.cart, style.open)}>
+      <div className={style.container}>
+        <div className={style.header}>
+          <h3 className={style.title}>Ваш заказ</h3>
 
-          <button className="cart__close">
+          <button className={style.close}>
             <svg
               width="28"
               height="28"
@@ -39,19 +40,19 @@ const Cart = () => {
           </button>
         </div>
 
-        <p className="cart__date-delivery">сегодня в 14:00</p>
+        <p className={style.dateDelivery}>сегодня в 14:00</p>
 
-        <ul className="cart__list">
+        <ul className={style.list}>
           {goodsArray.map((item) => (
-            <li className="cart__item" key={item.id}>
+            <li className={style.item} key={item.id}>
               <CartItem {...item} />
             </li>
           ))}
         </ul>
 
-        <div className="cart__footer">
-          <button className="cart__order-btn">Оформить</button>
-          <p className="cart__price cart__price_total">0&nbsp;₽</p>
+        <div className={style.footer}>
+          <button className={style.orderBtn}>Оформить</button>
+          <p className={cn(style.price, style.priceTotal)}>0&nbsp;₽</p>
         </div>
       </div>
     </section>

@@ -1,14 +1,15 @@
-import './card.scss';
+import style from './Card.module.scss';
+import cn from 'classnames';
 
 const Card = ({ img, title, dateDelivery, price }) => {
   return (
-    <article className="goods__card card">
-      <img className="card__image" src={img} alt={title} />
-      <div className="card__content">
-        <h3 className="card__title">{title}</h3>
-        <div className="card__footer">
-          <p className="card__date-delivery">{dateDelivery}</p>
-          <button className="card__button">{price}&nbsp;₽</button>
+    <article className={cn('goods__card', style.card)}>
+      <img className={style.image} src={img} alt={title} />
+      <div className={style.content}>
+        <h3 className={style.title}>{title}</h3>
+        <div className={style.footer}>
+          <p className={style.dateDelivery}>{dateDelivery}</p>
+          <button className={style.button}>{price}&nbsp;₽</button>
         </div>
       </div>
     </article>

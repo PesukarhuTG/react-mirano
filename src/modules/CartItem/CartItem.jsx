@@ -1,20 +1,22 @@
+import style from './CartItem.module.scss';
+
 const CartItem = ({ img, title, price }) => {
   return (
     <>
-      <img className="cart__img" src={img} alt={title} />
-      <h4 className="cart__item-title">{title}</h4>
-      <div className="cart__counter">
-        <button className="cart__counter-btn">-</button>
+      <img className={style.img} src={img} alt={title} />
+      <h4 className={style.itemTitle}>{title}</h4>
+      <div className={style.counter}>
+        <button className={style.counterBtn}>-</button>
         <input
-          className="cart__counter-input"
+          className={style.counterInput}
           type="number"
           max="99"
           min="0"
           value="1"
         />
-        <button className="cart__counter-btn">+</button>
+        <button className={style.counterBtn}>+</button>
       </div>
-      <p className="cart__price">{price}&nbsp;₽</p>
+      <p className={style.price}>{price}&nbsp;₽</p>
     </>
   );
 };

@@ -1,4 +1,5 @@
-import './order.scss';
+import style from './Order.module.scss';
+import cn from 'classnames';
 
 const Order = () => {
   const orderStatus = '';
@@ -8,72 +9,72 @@ const Order = () => {
   return (
     <>
       {(orderStatus === 'open' && (
-        <div className="order">
-          <div className="order__wrapper">
-            <h2 className="order__title">Оформить заказ</h2>
-            <form className="order__form" id="order">
-              <fieldset className="order__fieldset">
-                <legend className="order__legend">Данные заказчика</legend>
-                <div className="order__input-group">
+        <div className={style.order}>
+          <div className={style.wrapper}>
+            <h2 className={style.title}>Оформить заказ</h2>
+            <form className={style.form} id="order">
+              <fieldset className={style.fieldset}>
+                <legend className={style.legend}>Данные заказчика</legend>
+                <div className={style.inputGroup}>
                   <input
-                    className="order__input"
+                    className={style.input}
                     type="text"
                     name="name-buyer"
                     placeholder="Имя"
                   />
                   <input
-                    className="order__input"
+                    className={style.input}
                     type="text"
                     name="phone-buyer"
                     placeholder="Телефон"
                   />
                 </div>
               </fieldset>
-              <fieldset className="order__fieldset">
-                <legend className="order__legend">Данные получателя</legend>
-                <div className="order__input-group">
+              <fieldset className={style.fieldset}>
+                <legend className={style.legend}>Данные получателя</legend>
+                <div className={style.inputGroup}>
                   <input
-                    className="order__input"
+                    className={style.input}
                     type="text"
                     name="name-recipient"
                     placeholder="Имя"
                   />
                   <input
-                    className="order__input"
+                    className={style.input}
                     type="text"
                     name="phone-recipient"
                     placeholder="Телефон"
                   />
                 </div>
               </fieldset>
-              <fieldset className="order__fieldset">
-                <legend className="order__legend">Адрес</legend>
-                <div className="order__input-group">
+              <fieldset className={style.fieldset}>
+                <legend className={style.legend}>Адрес</legend>
+                <div className={style.inputGroup}>
                   <input
-                    className="order__input"
+                    className={style.input}
                     type="text"
                     name="street"
                     placeholder="Улица"
                   />
                   <input
-                    className="order__input order__input_min"
+                    className={cn(style.input, style.input_min)}
                     type="text"
                     name="house"
                     placeholder="Дом"
                   />
                   <input
-                    className="order__input order__input_min"
+                    className={cn(style.input, style.input_min)}
                     type="text"
                     name="apartment"
                     placeholder="Квартира"
                   />
                 </div>
               </fieldset>
-              <fieldset className="order__fieldset">
-                <div className="order__payment">
-                  <label className="order__label-radio">
+              <fieldset className={style.fieldset}>
+                <div className={style.payment}>
+                  <label className={style.labelRadio}>
                     <input
-                      className="order__radio"
+                      className={style.radio}
                       type="radio"
                       name="payment-online"
                       value="true"
@@ -82,12 +83,12 @@ const Order = () => {
                     Оплата онлайн
                   </label>
                 </div>
-                <div className="order__delivery">
+                <div className={style.delivery}>
                   <label htmlFor="delivery">Доставка 01.07</label>
                   <input type="hidden" name="delivery-date" value="01.07" />
-                  <div className="order__select-wrapper">
+                  <div className={style.selectWrapper}>
                     <select
-                      className="order__select"
+                      className={style.select}
                       name="delivery-time"
                       id="delivery"
                     >
@@ -100,23 +101,23 @@ const Order = () => {
                 </div>
               </fieldset>
             </form>
-            <div className="order__footer">
-              <p className="order__total">92100&nbsp;₽</p>
-              <button className="order__button" type="submit" form="order">
+            <div className={style.footer}>
+              <p className={style.total}>92100&nbsp;₽</p>
+              <button className={style.button} type="submit" form="order">
                 Заказать
               </button>
             </div>
           </div>
-          <button className="order__close" type="button">
+          <button className={style.close} type="button">
             ×
           </button>
         </div>
       )) ||
         (orderStatus === 'close' && (
-          <div className="order">
-            <div className="order__wrapper">
-              <h2 className="order__title">Заказ оформлен!</h2>
-              <p className="order__id">
+          <div className={style.order}>
+            <div className={style.wrapper}>
+              <h2 className={style.title}>Заказ оформлен!</h2>
+              <p className={style.id}>
                 Ваш номер заказа: 971f365a-caa1-4cdb-9446-bad2eff047e1
               </p>
             </div>

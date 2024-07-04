@@ -1,15 +1,16 @@
-import './filter.scss';
-import './choices.scss';
+import sFilter from './Filter.module.scss';
+import sChoices from './Choices.module.scss';
+import cn from 'classnames';
 
 const Filter = () => {
   return (
-    <section className="filter">
+    <section className={sFilter.filter}>
       <h2 className="visually-hidden"></h2>
       <div className="container">
-        <form className="filter__form">
-          <fieldset className="filter__group">
+        <form className={sFilter.form}>
+          <fieldset className={sFilter.group}>
             <input
-              className="filter__radio"
+              className={sFilter.radio}
               type="radio"
               name="type"
               value="bouquets"
@@ -17,54 +18,60 @@ const Filter = () => {
               defaultChecked
             />
             <label
-              className="filter__label filter__label_flower"
+              className={cn(sFilter.label, sFilter.label_flower)}
               htmlFor="flower"
             >
               Цветы
             </label>
 
             <input
-              className="filter__radio"
+              className={sFilter.radio}
               type="radio"
               name="type"
               value="toys"
               id="toys"
             />
-            <label className="filter__label filter__label_toys" htmlFor="toys">
+            <label
+              className={cn(sFilter.label, sFilter.label_toys)}
+              htmlFor="toys"
+            >
               Игрушки
             </label>
 
             <input
-              className="filter__radio"
+              className={sFilter.radio}
               type="radio"
               name="type"
               value="postcards"
               id="postcard"
             />
             <label
-              className="filter__label filter__label_postcard"
+              className={cn(sFilter.label, sFilter.label_postcard)}
               htmlFor="postcard"
             >
               Открытки
             </label>
           </fieldset>
 
-          <fieldset className="filter__group filter__group_choices">
-            <div className="filter__choices choices">
-              <button className="filter__select choices__btn" type="button">
+          <fieldset className={cn(sFilter.group, sFilter.group_choices)}>
+            <div className={cn(sFilter.choices, sChoices.choices)}>
+              <button
+                className={cn(sFilter.select, sChoices.choicesBtn)}
+                type="button"
+              >
                 Цена
               </button>
 
-              <div className="choices__box filter__choices-box">
-                <fieldset className="filter__price">
+              <div className={cn(sChoices.choices__box, sFilter.choicesBox)}>
+                <fieldset className={sFilter.price}>
                   <input
-                    className="filter__input-price"
+                    className={sFilter.inputPrice}
                     type="text"
                     name="minPrice"
                     placeholder="от"
                   />
                   <input
-                    className="filter__input-price"
+                    className={sFilter.inputPrice}
                     type="text"
                     name="maxPrice"
                     placeholder="до"
@@ -73,35 +80,50 @@ const Filter = () => {
               </div>
             </div>
 
-            <div className="filter__choices filter__choices_type choices">
-              <button className="filter__select choices__btn" type="button">
+            <div
+              className={cn(
+                sFilter.choices,
+                sFilter.choicesBox_type,
+                sChoices.choices
+              )}
+            >
+              <button
+                className={cn(sFilter.select, sChoices.choicesBtn)}
+                type="button"
+              >
                 Тип товара
               </button>
 
-              <div className="choices__box filter__choices-box filter__choices-box_type">
-                <ul className="filter__type-list">
-                  <li className="filter__type-item">
-                    <button className="filter__type-button" type="button">
+              <div
+                className={cn(
+                  sChoices.choices__box,
+                  sFilter.choicesBox,
+                  sFilter.choicesBox_type
+                )}
+              >
+                <ul className={sFilter.typeList}>
+                  <li className={sFilter.typeItem}>
+                    <button className={sFilter.typeButton} type="button">
                       Монобукеты
                     </button>
                   </li>
-                  <li className="filter__type-item">
-                    <button className="filter__type-button" type="button">
+                  <li className={sFilter.typeItem}>
+                    <button className={sFilter.typeButton} type="button">
                       Авторские букеты
                     </button>
                   </li>
-                  <li className="filter__type-item">
-                    <button className="filter__type-button" type="button">
+                  <li className={sFilter.typeItem}>
+                    <button className={sFilter.typeButton} type="button">
                       Цветы в коробке
                     </button>
                   </li>
-                  <li className="filter__type-item">
-                    <button className="filter__type-button" type="button">
+                  <li className={sFilter.typeItem}>
+                    <button className={sFilter.typeButton} type="button">
                       Цветы в корзине
                     </button>
                   </li>
-                  <li className="filter__type-item">
-                    <button className="filter__type-button" type="button">
+                  <li className={sFilter.typeItem}>
+                    <button className={sFilter.typeButton} type="button">
                       Букеты из сухоцветов
                     </button>
                   </li>

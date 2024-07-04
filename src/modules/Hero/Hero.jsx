@@ -1,16 +1,17 @@
-import './hero.scss';
+import style from './Hero.module.scss';
+import cn from 'classnames';
 
 const Hero = () => {
   return (
-    <section className="hero">
+    <section className={style.hero}>
       <div className="container">
-        <div className="hero__head-group">
-          <h1 className="hero__title">Авторские букеты</h1>
-          <p className="hero__subtitle">и подарки</p>
+        <div className={style.headGroup}>
+          <h1 className={style.title}>Авторские букеты</h1>
+          <p className={style.subtitle}>и подарки</p>
         </div>
 
-        <figure className="hero__group-image">
-          <picture className="hero__image hero__image_left">
+        <figure className={style.groupImage}>
+          <picture className={cn(style.image, style.image_left)}>
             <source
               srcSet="/img/hero-left@1x.avif 1x, /img/hero-left@2x.avif 2x"
               type="image/avif"
@@ -27,7 +28,7 @@ const Hero = () => {
           </picture>
 
           <svg
-            className="hero__image hero__image_center"
+            className={cn(style.image, style.image_center)}
             role="img"
             aria-label="Букет цветов в вазе, включающий нежные розовые розы, розовые хризантемы и другие цветы пастельных цветов, размещенные в беловй вазе в форме головы."
             width="680"
@@ -42,11 +43,11 @@ const Hero = () => {
             </clipPath>
 
             <foreignObject clipPath="url(#hero)" width="100%" height="100%">
-              <div className="hero__image-center"></div>
+              <div className={style.imageCenter}></div>
             </foreignObject>
           </svg>
 
-          <picture className="hero__image hero__image_right">
+          <picture className={cn(style.image, style.image_right)}>
             <source
               srcSet="/img/hero-right@1x.avif 1x, /img/hero-right@2x.avif 2x"
               type="image/avif"

@@ -1,18 +1,19 @@
-import './header.scss';
+import style from './Header.module.scss';
+import cn from 'classnames';
 
 const Header = () => {
   return (
-    <header className="header">
-      <div className="container header__container">
-        <form className="header__form" action="#">
+    <header className={style.header}>
+      <div className={cn('container', style.container)}>
+        <form className={style.form} action="#">
           <input
-            className="header__input"
+            className={style.input}
             type="search"
             name="search"
             placeholder="Букет из роз"
           />
 
-          <button className="header__search-button" aria-label="начать поиск">
+          <button className={style.searchButton} aria-label="начать поиск">
             <svg
               width="20"
               height="20"
@@ -29,12 +30,12 @@ const Header = () => {
         </form>
 
         <img
-          className="header__logo"
+          className={style.logo}
           src="/img/logo.svg"
           alt="Логотип Mirano Flower Boutique"
         />
 
-        <button className="header__cart-button">0</button>
+        <button className={style.cartButton}>0</button>
       </div>
     </header>
   );

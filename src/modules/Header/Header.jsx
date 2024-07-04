@@ -1,7 +1,15 @@
 import style from './Header.module.scss';
 import cn from 'classnames';
+import { useDispatch } from 'react-redux';
+import { toggleCart } from '../../redux/cartSlice';
 
 const Header = () => {
+  const dispatch = useDispatch();
+
+  const handlerCartToggle = () => {
+    dispatch(toggleCart());
+  };
+
   return (
     <header className={style.header}>
       <div className={cn('container', style.container)}>
@@ -35,7 +43,9 @@ const Header = () => {
           alt="Логотип Mirano Flower Boutique"
         />
 
-        <button className={style.cartButton}>0</button>
+        <button className={style.cartButton} onClick={handlerCartToggle}>
+          0
+        </button>
       </div>
     </header>
   );

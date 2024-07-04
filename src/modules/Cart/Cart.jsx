@@ -2,9 +2,19 @@ import style from './Cart.module.scss';
 import cn from 'classnames';
 import { goodsArray } from '../../goodsArray.js';
 import { CartItem } from '../';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleCart } from '../../redux/cartSlice';
 
 const Cart = () => {
   goodsArray.length = 3;
+  const { isOpen } = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+
+  const handlerCartClose = () => {
+    dispatch(toggleCart());
+  };
+
+  if (!isOpen) return null;
 
   return (
     <section className={cn(style.cart, style.open)}>
@@ -12,7 +22,7 @@ const Cart = () => {
         <div className={style.header}>
           <h3 className={style.title}>Ваш заказ</h3>
 
-          <button className={style.close}>
+          <button className={style.close} onClick={handlerCartClose}>
             <svg
               width="28"
               height="28"

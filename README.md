@@ -17,9 +17,10 @@ Using technologies:
 What was implemented:
 
 - interface is based on [Figma layout](https://www.figma.com/design/6IWKE30QwZ5btoaSx1BFo0/MIRANO-Online-store?m=auto&t=oeGg6M9B7ayjMLzK-6)
+- add path alias by nodejs in vite.config.js
 - Redux State Management
 - Product cards: displaying information about products in a flexible format
 
-## Deploy info :zap:
+## Deploy info :zap: :zap: :zap:
 
 - **enjoy the project by <a href="https://react-mirano.vercel.app/" target="_blank">deploy link</a>**

@@ -4,6 +4,7 @@ import { goodsArray } from '../../goodsArray.js';
 import { CartItem } from '../';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleCart } from '../../redux/cartSlice';
+import { toggleModal } from '../../redux/modalSlice.js';
 
 const Cart = () => {
   goodsArray.length = 3;
@@ -12,6 +13,10 @@ const Cart = () => {
 
   const handlerCartClose = () => {
     dispatch(toggleCart());
+  };
+
+  const handlerModalOpen = () => {
+    dispatch(toggleModal());
   };
 
   if (!isOpen) return null;
@@ -59,7 +64,9 @@ const Cart = () => {
         </ul>
 
         <div className={style.footer}>
-          <button className={style.orderBtn}>Оформить</button>
+          <button className={style.orderBtn} onClick={handlerModalOpen}>
+            Оформить
+          </button>
           <p className={cn(style.price, style.priceTotal)}>0&nbsp;₽</p>
         </div>
       </div>

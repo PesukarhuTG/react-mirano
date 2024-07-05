@@ -1,19 +1,12 @@
 import style from './Choices.module.scss';
-import { useState } from 'react';
 
-const Choices = ({ btnLabel, children }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleToggle = () => {
-    setIsOpen((oldIsOpen) => !oldIsOpen);
-  };
-
+const Choices = ({ btnLabel, children, isOpen, onShow }) => {
   return (
     <div className={style.choices}>
       <button
         className={isOpen ? style.choices__btn_open : style.choices__btn}
         type="button"
-        onClick={handleToggle}
+        onClick={onShow}
       >
         {btnLabel}
       </button>

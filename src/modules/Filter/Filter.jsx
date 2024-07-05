@@ -1,8 +1,11 @@
 import style from './Filter.module.scss';
 import cn from 'classnames';
 import { Choices } from '../';
+import { useState } from 'react';
 
 const Filter = () => {
+  const [activeIndex, setActiveIndex] = useState(null);
+
   return (
     <section className={style.filter}>
       <h2 className="visually-hidden"></h2>
@@ -51,7 +54,11 @@ const Filter = () => {
           </fieldset>
 
           <fieldset className={cn(style.group, style.group_choices)}>
-            <Choices btnLabel="Цена">
+            <Choices
+              btnLabel="Цена"
+              isOpen={activeIndex === 0}
+              onShow={() => setActiveIndex(0)}
+            >
               <fieldset className={style.price}>
                 <input
                   className={style.inputPrice}
@@ -68,7 +75,11 @@ const Filter = () => {
               </fieldset>
             </Choices>
 
-            <Choices btnLabel="Тип товара">
+            <Choices
+              btnLabel="Тип товара"
+              isOpen={activeIndex === 1}
+              onShow={() => setActiveIndex(1)}
+            >
               <ul className={style.typeList}>
                 <li className={style.typeItem}>
                   <button className={style.typeButton} type="button">

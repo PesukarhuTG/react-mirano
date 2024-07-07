@@ -4,7 +4,7 @@ import cn from 'classnames';
 import { closeModal } from '../../redux/modalSlice';
 
 const Order = () => {
-  const isOrder = false;
+  const isOrderReady = false;
 
   const { isOpen } = useSelector((state) => state.modal);
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ const Order = () => {
   return (
     <div className={style.order} onClick={handlerClose}>
       <div className={style.wrapper}>
-        {isOrder ? (
+        {isOrderReady ? (
           <>
             <h2 className={style.title}>Заказ оформлен!</h2>
             <p className={style.id}>

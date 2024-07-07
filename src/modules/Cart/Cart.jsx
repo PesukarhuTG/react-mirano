@@ -4,7 +4,7 @@ import { goodsArray } from '../../goodsArray.js';
 import { CartItem } from '../';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleCart } from '../../redux/cartSlice';
-import { toggleModal } from '../../redux/modalSlice.js';
+import { openModal } from '../../redux/modalSlice.js';
 
 const Cart = () => {
   goodsArray.length = 3;
@@ -16,7 +16,7 @@ const Cart = () => {
   };
 
   const handlerModalOpen = () => {
-    dispatch(toggleModal());
+    dispatch(openModal());
   };
 
   if (!isOpen) return null;

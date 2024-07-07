@@ -4,7 +4,11 @@ import { Choices } from '../';
 import { useState } from 'react';
 
 const Filter = () => {
-  const [activeIndex, setActiveIndex] = useState(null);
+  const [openChoice, setOpenChoice] = useState(null);
+
+  const handleChoicesToggle = (index) => {
+    setOpenChoice(openChoice === index ? null : index);
+  };
 
   return (
     <section className={style.filter}>
@@ -56,8 +60,8 @@ const Filter = () => {
           <fieldset className={cn(style.group, style.group_choices)}>
             <Choices
               btnLabel="Цена"
-              isOpen={activeIndex === 0}
-              onShow={() => setActiveIndex(0)}
+              openChoice={openChoice === 0}
+              onToggle={() => handleChoicesToggle(0)}
             >
               <fieldset className={style.price}>
                 <input
@@ -77,8 +81,8 @@ const Filter = () => {
 
             <Choices
               btnLabel="Тип товара"
-              isOpen={activeIndex === 1}
-              onShow={() => setActiveIndex(1)}
+              openChoice={openChoice === 1}
+              onToggle={() => handleChoicesToggle(1)}
             >
               <ul className={style.typeList}>
                 <li className={style.typeItem}>

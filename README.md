@@ -1,6 +1,9 @@
 # Online-store FLOWERS & GIFTS
+![Screenshot_2024_07_07-2](https://github.com/PesukarhuTG/react-mirano/assets/39487464/ef107fa5-deca-4a10-a666-93716a89747b)
+<h2 align="center"><a href="https://react-mirano.vercel.app" target="_blank">Deploy link</a></h2>
 
-## Description :page_facing_up: /...in process.../
+
+## Description :page_facing_up: (in the process...)
 
 **REACT project**.<br><br>
 Using technologies:

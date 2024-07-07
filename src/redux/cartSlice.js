@@ -8,10 +8,17 @@ const totalCartSize = !cartItems
       return sum + item.count;
     }, 0);
 
+const totalCartSum = !cartItems
+  ? 0
+  : cartItems.reduce((sum, item) => {
+      return sum + item.count * item.price;
+    }, 0);
+
 const initialState = {
   isOpen: false,
   cartItems,
   countItems: totalCartSize,
+  sum: totalCartSum,
 };
 
 const cartSlice = createSlice({
@@ -35,6 +42,10 @@ const cartSlice = createSlice({
       state.countItems = state.cartItems.reduce((sum, item) => {
         //по измененному количеству считаем итог
         return sum + item.count;
+      }, 0);
+
+      state.sum = state.cartItems.reduce((sum, item) => {
+        return sum + item.count * item.price;
       }, 0);
 
       localStorage.setItem('cart_mirano', JSON.stringify(state.cartItems));

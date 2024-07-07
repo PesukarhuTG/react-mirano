@@ -6,7 +6,7 @@ import { toggleCart } from '../../redux/cartSlice';
 import { openModal } from '../../redux/modalSlice.js';
 
 const Cart = () => {
-  const { isOpen, cartItems } = useSelector((state) => state.cart);
+  const { isOpen, cartItems, sum } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
   const handlerCartClose = () => {
@@ -65,7 +65,7 @@ const Cart = () => {
           <button className={style.orderBtn} onClick={handlerModalOpen}>
             Оформить
           </button>
-          <p className={cn(style.price, style.priceTotal)}>0&nbsp;₽</p>
+          <p className={cn(style.price, style.priceTotal)}>{`${sum} ₽`}</p>
         </div>
       </div>
     </section>

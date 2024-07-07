@@ -20,11 +20,11 @@ What was implemented:
 - add path alias by nodejs in vite.config.js
 - Redux State Management
 - Product cards: displaying information about products in a flexible format
-- Filters: using Sharing state betwween components (lifting state up)
+- Filters: using Sharing state between components (lifting state up)
 - Modal windows
 - Cart: add goods, show goods counter in the Header
 
 ## Deploy info :zap: :zap: :zap:
 
 - **enjoy the project by <a href="https://react-mirano.vercel.app/" target="_blank">deploy link</a>**
-- deploy API [on Glitch](https://olivine-sky-vault.glitch.me)
+- deploy API [on Glitch](https://olivine-sky-vault.glitch.me/api-docs)

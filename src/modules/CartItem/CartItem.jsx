@@ -1,6 +1,6 @@
 import style from './CartItem.module.scss';
 
-const CartItem = ({ img, title, price }) => {
+const CartItem = ({ img, title, price, count }) => {
   return (
     <li className={style.item}>
       <img className={style.img} src={img} alt={title} />
@@ -12,7 +12,7 @@ const CartItem = ({ img, title, price }) => {
           type="number"
           max="99"
           min="0"
-          value="1"
+          value={count}
         />
         <button className={style.counterBtn}>+</button>
       </div>

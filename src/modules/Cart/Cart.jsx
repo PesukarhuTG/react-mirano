@@ -6,7 +6,7 @@ import { toggleCart } from '../../redux/cartSlice';
 import { openModal } from '../../redux/modalSlice.js';
 
 const Cart = () => {
-  const { isOpen, items } = useSelector((state) => state.cart);
+  const { isOpen, cartItems } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
   const handlerCartClose = () => {
@@ -56,7 +56,7 @@ const Cart = () => {
         <p className={style.dateDelivery}>сегодня в 14:00</p>
 
         <ul className={style.list}>
-          {items.map((item) => (
+          {cartItems.map((item) => (
             <CartItem key={item.id} {...item} />
           ))}
         </ul>

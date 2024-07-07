@@ -1,8 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const cartItems = JSON.parse(localStorage.getItem('cart_mirano') || '[]');
+
+const totalCartSize = !cartItems
+  ? 0
+  : cartItems.reduce((sum, item) => {
+      return sum + item.count;
+    }, 0);
+
 const initialState = {
   isOpen: false,
-  items: JSON.parse(localStorage.getItem('cart') || '[]'),
+  cartItems,
+  countItems: totalCartSize,
 };
 
 const cartSlice = createSlice({
@@ -15,15 +24,20 @@ const cartSlice = createSlice({
     addItemToCart(state, action) {
       const { id, img, title, price, count = 1 } = action.payload; //получаем данные
 
-      const existingItem = state.items.find((item) => item.id === id); //если они совпадают с уже находящимся в корзине
+      const existingItem = state.cartItems.find((item) => item.id === id); //есть ли в корзине undefind/элемент
 
       if (existingItem) {
-        existingItem.count = count; // ...то изменяем только количество
+        existingItem.count = existingItem.count + 1; // ...то изменяем только количество
       } else {
-        state.items.push({ id, img, title, price, count }); // ...иначе добавляем новые данные
+        state.cartItems.push({ id, img, title, price, count }); // ...иначе добавляем новые данные
       }
 
-      localStorage.setItem('cart', JSON.stringify(state.items));
+      state.countItems = state.cartItems.reduce((sum, item) => {
+        //по измененному количеству считаем итог
+        return sum + item.count;
+      }, 0);
+
+      localStorage.setItem('cart_mirano', JSON.stringify(state.cartItems));
     },
   },
 });

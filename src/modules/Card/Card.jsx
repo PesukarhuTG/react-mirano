@@ -3,7 +3,7 @@ import style from './Card.module.scss';
 import cn from 'classnames';
 import { addItemToCart } from '../../redux/cartSlice';
 
-const Card = ({ id, img, title, dateDelivery, price }) => {
+const Card = ({ id, img, title, price, dateDelivery }) => {
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {

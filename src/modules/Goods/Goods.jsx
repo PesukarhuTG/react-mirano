@@ -1,7 +1,7 @@
 import style from './Goods.module.scss';
 import cn from 'classnames';
 import { Cart, Card } from '../';
-import { fetchAllGoods } from '../../redux/goodsSlice';
+import { fetchGoods } from '../../redux/goodsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { API_URL } from '../../const';
@@ -16,7 +16,7 @@ const Goods = () => {
 
   useEffect(() => {
     if (goodsStatus === 'idle') {
-      dispatch(fetchAllGoods());
+      dispatch(fetchGoods());
     }
   }, [dispatch, goodsStatus]);
 

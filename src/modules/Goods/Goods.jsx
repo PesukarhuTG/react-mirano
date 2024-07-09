@@ -8,6 +8,8 @@ import { API_URL } from '../../const';
 
 const Goods = () => {
   const dispatch = useDispatch();
+  const { activeFilter } = useSelector((state) => state.filter);
+
   const {
     items: goodsList,
     status: goodsStatus,
@@ -15,10 +17,8 @@ const Goods = () => {
   } = useSelector((state) => state.goods);
 
   useEffect(() => {
-    if (goodsStatus === 'idle') {
-      dispatch(fetchGoods('type=bouquets'));
-    }
-  }, [dispatch, goodsStatus]);
+    dispatch(fetchGoods(`type=${activeFilter}`));
+  }, [dispatch, activeFilter]);
 
   let content = null;
 
@@ -52,7 +52,13 @@ const Goods = () => {
     <section className={style.goods}>
       <div className={cn('container', style.container)}>
         <div className={style.box}>
-          <h2 className={style.title}>Цветы</h2>
+          <h2 className={style.title}>
+            {activeFilter === 'bouquets'
+              ? 'Цветы'
+              : activeFilter === 'toys'
+              ? 'Игрушки'
+              : 'Открытки'}
+          </h2>
           {content}
         </div>
         <Cart />

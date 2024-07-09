@@ -69,12 +69,12 @@
     }
   }
 
-  .radio:focus-visible + &__label {
+  .radio:focus-visible + .label {
     outline: 2px solid $orange;
     outline-offset: 5px;
   }
 
-  .radio:checked + &__label {
+  .radio:checked + .label {
     background-color: $light-orange;
   }
 }

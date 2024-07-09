@@ -2,9 +2,14 @@ import style from './Filter.module.scss';
 import cn from 'classnames';
 import { Choices } from '../';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setActiveFilter } from '../../redux/filterSlice';
 
 const Filter = () => {
+  const dispatch = useDispatch();
   const [openChoice, setOpenChoice] = useState(null);
+
+  const { activeFilter } = useSelector((state) => state.filter);
 
   const handleChoicesToggle = (index) => {
     setOpenChoice(openChoice === index ? null : index);
@@ -15,14 +20,15 @@ const Filter = () => {
       <h2 className="visually-hidden"></h2>
       <div className="container">
         <form className={style.form}>
-          <fieldset className={style.group}>
+          <fieldset className={cn(style.group)}>
             <input
-              className={style.radio}
+              className={cn(style.radio)}
               type="radio"
               name="type"
               value="bouquets"
               id="flower"
-              defaultChecked
+              defaultChecked={activeFilter === 'bouquets' ? true : false}
+              onChange={() => dispatch(setActiveFilter('bouquets'))}
             />
             <label
               className={cn(style.label, style.label_flower)}
@@ -37,6 +43,8 @@ const Filter = () => {
               name="type"
               value="toys"
               id="toys"
+              defaultChecked={activeFilter === 'toys' ? true : false}
+              onChange={() => dispatch(setActiveFilter('toys'))}
             />
             <label className={cn(style.label, style.label_toys)} htmlFor="toys">
               Игрушки
@@ -48,6 +56,8 @@ const Filter = () => {
               name="type"
               value="postcards"
               id="postcard"
+              defaultChecked={activeFilter === 'postcards' ? true : false}
+              onChange={() => dispatch(setActiveFilter('postcards'))}
             />
             <label
               className={cn(style.label, style.label_postcard)}

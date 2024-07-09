@@ -1,7 +1,7 @@
 import style from './Filter.module.scss';
 import cn from 'classnames';
 import { Choices } from '../';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setActiveFilter } from '../../redux/filterSlice';
 
@@ -14,6 +14,10 @@ const Filter = () => {
   const handleChoicesToggle = (index) => {
     setOpenChoice(openChoice === index ? null : index);
   };
+
+  useEffect(() => {
+    setOpenChoice(null);
+  }, [dispatch, activeFilter]);
 
   return (
     <section className={style.filter}>

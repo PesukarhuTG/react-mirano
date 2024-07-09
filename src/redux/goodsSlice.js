@@ -1,11 +1,17 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { API_URL } from '../const';
 
-export const fetchGoods = createAsyncThunk('goods/fetchGoods', async () => {
-  const res = await fetch(`${API_URL}/api/products`);
-  const data = await res.json();
-  return data;
-});
+export const fetchGoods = createAsyncThunk(
+  'goods/fetchGoods',
+  async (params) => {
+    const queryString = new URLSearchParams(params).toString();
+    const res = await fetch(
+      `${API_URL}/api/products${queryString ? `?${queryString}` : ''}`
+    );
+    const data = await res.json();
+    return data;
+  }
+);
 
 const initialState = {
   items: [],

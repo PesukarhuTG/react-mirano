@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 const Card = ({ id, img, title, price, dateDelivery }) => {
   const dispatch = useDispatch();
-  const [isHover, setIsHover] = useState(false);
+  const [buttonText, setButtonText] = useState(`${price} ₽`);
 
   const handleAddToCart = () => {
     dispatch(addItemToCart({ id, img, title, price }));
@@ -22,10 +22,10 @@ const Card = ({ id, img, title, price, dateDelivery }) => {
           <button
             className={style.button}
             onClick={handleAddToCart}
-            onMouseOver={() => setIsHover((oldIsHover) => !oldIsHover)}
-            onMouseOut={() => setIsHover((oldIsHover) => !oldIsHover)}
+            onMouseEnter={() => setButtonText('В корзину')}
+            onMouseLeave={() => setButtonText(`${price} ₽`)}
           >
-            {!isHover ? `${price} ₽` : 'В корзину'}
+            {buttonText}
           </button>
         </div>
       </div>

@@ -17,7 +17,7 @@ const Goods = () => {
   } = useSelector((state) => state.goods);
 
   useEffect(() => {
-    dispatch(fetchGoods(`type=${activeFilter}`));
+    dispatch(fetchGoods({ type: activeFilter }));
   }, [dispatch, activeFilter]);
 
   let content = null;

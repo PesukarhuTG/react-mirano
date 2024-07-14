@@ -12,7 +12,7 @@ const CartItem = ({ img, title, price, count }) => {
           type="number"
           max="99"
           min="0"
-          value={count}
+          defaultValue={count}
         />
         <button className={style.counterBtn}>+</button>
       </div>

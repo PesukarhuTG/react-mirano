@@ -106,7 +106,7 @@ const Filter = () => {
                   type="text"
                   name="minPrice"
                   placeholder="от"
-                  value={minPrice}
+                  defaultValue={minPrice}
                   onChange={handlePriceChange}
                 />
                 <input
@@ -114,7 +114,7 @@ const Filter = () => {
                   type="text"
                   name="maxPrice"
                   placeholder="до"
-                  value={maxPrice}
+                  defaultValue={maxPrice}
                   onChange={handlePriceChange}
                 />
               </fieldset>

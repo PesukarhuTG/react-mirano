@@ -9,3 +9,4 @@ export { default as Filter } from './Filter/Filter';
 export { default as Subscribe } from './Subscribe/Subscribe';
 export { default as Order } from './Order/Order';
 export { default as Choices } from './Choices/Choices';
+export { default as FilterRadio } from './Filter/FilterRadio';

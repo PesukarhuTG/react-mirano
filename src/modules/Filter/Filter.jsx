@@ -1,6 +1,6 @@
 import style from './Filter.module.scss';
 import cn from 'classnames';
-import { Choices } from '../';
+import { Choices, FilterRadio } from '../';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -8,6 +8,12 @@ import {
   setMinPrice,
   setMaxPrice,
 } from '../../redux/filterSlice';
+
+const filterTypes = [
+  { value: 'bouquets', title: 'Цветы' },
+  { value: 'toys', title: 'Игрушки' },
+  { value: 'postcards', title: 'Открытки' },
+];
 
 const Filter = () => {
   const dispatch = useDispatch();
@@ -48,50 +54,14 @@ const Filter = () => {
       <div className="container">
         <form className={style.form}>
           <fieldset className={cn(style.group)}>
-            <input
-              className={cn(style.radio)}
-              type="radio"
-              name="type"
-              value="bouquets"
-              id="flower"
-              checked={activeFilter === 'bouquets'}
-              onChange={handleTypeChange}
-            />
-            <label
-              className={cn(style.label, style.label_flower)}
-              htmlFor="flower"
-            >
-              Цветы
-            </label>
-
-            <input
-              className={style.radio}
-              type="radio"
-              name="type"
-              value="toys"
-              id="toys"
-              checked={activeFilter === 'toys'}
-              onChange={handleTypeChange}
-            />
-            <label className={cn(style.label, style.label_toys)} htmlFor="toys">
-              Игрушки
-            </label>
-
-            <input
-              className={style.radio}
-              type="radio"
-              name="type"
-              value="postcards"
-              id="postcard"
-              checked={activeFilter === 'postcards'}
-              onChange={handleTypeChange}
-            />
-            <label
-              className={cn(style.label, style.label_postcard)}
-              htmlFor="postcard"
-            >
-              Открытки
-            </label>
+            {filterTypes.map((item) => (
+              <FilterRadio
+                key={item.value}
+                handleTypeChange={handleTypeChange}
+                activeFilter={activeFilter}
+                {...item}
+              />
+            ))}
           </fieldset>
 
           <fieldset className={cn(style.group, style.group_choices)}>

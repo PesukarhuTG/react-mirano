@@ -8,7 +8,9 @@ import { API_URL } from '../../const';
 
 const Goods = () => {
   const dispatch = useDispatch();
-  const { activeFilter } = useSelector((state) => state.filter);
+  const { activeFilter, minPrice, maxPrice } = useSelector(
+    (state) => state.filter
+  );
 
   const {
     items: goodsList,
@@ -17,8 +19,8 @@ const Goods = () => {
   } = useSelector((state) => state.goods);
 
   useEffect(() => {
-    dispatch(fetchGoods({ type: activeFilter }));
-  }, [dispatch, activeFilter]);
+    dispatch(fetchGoods({ type: activeFilter, minPrice, maxPrice }));
+  }, [dispatch, activeFilter, minPrice, maxPrice]);
 
   let content = null;
 

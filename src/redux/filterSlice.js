@@ -12,7 +12,7 @@ export const fetchFilterType = createAsyncThunk(
 
 const initialState = {
   activeFilter: 'bouquets',
-  minPrice: 0,
+  minPrice: '',
   maxPrice: '',
   category: '',
 };

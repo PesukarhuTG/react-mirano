@@ -3,13 +3,19 @@ import cn from 'classnames';
 import { Choices } from '../';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setActiveFilter } from '../../redux/filterSlice';
+import {
+  setActiveFilter,
+  setMinPrice,
+  setMaxPrice,
+} from '../../redux/filterSlice';
 
 const Filter = () => {
   const dispatch = useDispatch();
   const [openChoice, setOpenChoice] = useState(null);
 
-  const { activeFilter } = useSelector((state) => state.filter);
+  const { activeFilter, minPrice, maxPrice } = useSelector(
+    (state) => state.filter
+  );
 
   const handleChoicesToggle = (index) => {
     setOpenChoice(openChoice === index ? null : index);
@@ -20,9 +26,21 @@ const Filter = () => {
     dispatch(setActiveFilter(value));
   };
 
+  const handlePriceChange = ({ target }) => {
+    const { value, name } = target;
+    if (name === 'minPrice') {
+      dispatch(setMinPrice(value ? parseInt(value, 10) : ''));
+    }
+
+    if (name === 'maxPrice') {
+      dispatch(setMaxPrice(value ? parseInt(value, 10) : ''));
+    }
+  };
+
   useEffect(() => {
     setOpenChoice(null);
-  }, [activeFilter]);
+    dispatch(setMinPrice('')), dispatch(setMaxPrice(''));
+  }, [dispatch, activeFilter]);
 
   return (
     <section className={style.filter}>
@@ -88,12 +106,16 @@ const Filter = () => {
                   type="text"
                   name="minPrice"
                   placeholder="от"
+                  value={minPrice}
+                  onChange={handlePriceChange}
                 />
                 <input
                   className={style.inputPrice}
                   type="text"
                   name="maxPrice"
                   placeholder="до"
+                  value={maxPrice}
+                  onChange={handlePriceChange}
                 />
               </fieldset>
             </Choices>

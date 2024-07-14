@@ -11,7 +11,7 @@ import {
 
 const Filter = () => {
   const dispatch = useDispatch();
-  const [openChoice, setOpenChoice] = useState(null);
+  const [openChoice, setOpenChoice] = useState(-1);
 
   const { activeFilter, minPrice, maxPrice } = useSelector(
     (state) => state.filter
@@ -38,7 +38,7 @@ const Filter = () => {
   };
 
   useEffect(() => {
-    setOpenChoice(null);
+    setOpenChoice(-1);
     dispatch(setMinPrice('')), dispatch(setMaxPrice(''));
   }, [dispatch, activeFilter]);
 

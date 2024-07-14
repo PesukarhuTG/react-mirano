@@ -29,15 +29,11 @@ const Filter = () => {
   const handlePriceChange = ({ target }) => {
     const { value, name } = target;
     if (name === 'minPrice') {
-      dispatch(
-        setMinPrice(!isNaN(parseInt(value, 10)) ? parseInt(value, 10) : '')
-      );
+      dispatch(setMinPrice(!isNaN(parseInt(value, 10)) ? value : ''));
     }
 
     if (name === 'maxPrice') {
-      dispatch(
-        setMaxPrice(!isNaN(parseInt(value, 10)) ? parseInt(value, 10) : '')
-      );
+      dispatch(setMaxPrice(!isNaN(parseInt(value, 10)) ? value : ''));
     }
   };
 

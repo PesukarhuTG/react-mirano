@@ -15,9 +15,14 @@ const Filter = () => {
     setOpenChoice(openChoice === index ? null : index);
   };
 
+  const handleTypeChange = ({ target }) => {
+    const { value } = target;
+    dispatch(setActiveFilter(value));
+  };
+
   useEffect(() => {
     setOpenChoice(null);
-  }, [dispatch, activeFilter]);
+  }, [activeFilter]);
 
   return (
     <section className={style.filter}>
@@ -31,8 +36,8 @@ const Filter = () => {
               name="type"
               value="bouquets"
               id="flower"
-              defaultChecked={activeFilter === 'bouquets' ? true : false}
-              onChange={() => dispatch(setActiveFilter('bouquets'))}
+              checked={activeFilter === 'bouquets'}
+              onChange={handleTypeChange}
             />
             <label
               className={cn(style.label, style.label_flower)}
@@ -47,8 +52,8 @@ const Filter = () => {
               name="type"
               value="toys"
               id="toys"
-              defaultChecked={activeFilter === 'toys' ? true : false}
-              onChange={() => dispatch(setActiveFilter('toys'))}
+              checked={activeFilter === 'toys'}
+              onChange={handleTypeChange}
             />
             <label className={cn(style.label, style.label_toys)} htmlFor="toys">
               Игрушки
@@ -60,8 +65,8 @@ const Filter = () => {
               name="type"
               value="postcards"
               id="postcard"
-              defaultChecked={activeFilter === 'postcards' ? true : false}
-              onChange={() => dispatch(setActiveFilter('postcards'))}
+              checked={activeFilter === 'postcards'}
+              onChange={handleTypeChange}
             />
             <label
               className={cn(style.label, style.label_postcard)}

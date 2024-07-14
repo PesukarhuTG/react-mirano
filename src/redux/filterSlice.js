@@ -12,6 +12,9 @@ export const fetchFilterType = createAsyncThunk(
 
 const initialState = {
   activeFilter: 'bouquets',
+  minPrice: 0,
+  maxPrice: '',
+  category: '',
 };
 
 const filterSlice = createSlice({
@@ -21,8 +24,18 @@ const filterSlice = createSlice({
     setActiveFilter(state, action) {
       state.activeFilter = action.payload;
     },
+    setMinPrice(state, action) {
+      state.minPrice = action.payload;
+    },
+    setMaxPrice(state, action) {
+      state.maxPrice = action.payload;
+    },
+    setCategory(state, action) {
+      state.category = action.payload;
+    },
   },
 });
 
-export const { setActiveFilter } = filterSlice.actions;
+export const { setActiveFilter, setMinPrice, setMaxPrice, setCategory } =
+  filterSlice.actions;
 export default filterSlice.reducer;

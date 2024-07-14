@@ -4,10 +4,13 @@ import { CartItem } from '../';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleCart } from '../../redux/cartSlice';
 import { openModal } from '../../redux/modalSlice.js';
+import { useEffect, useRef } from 'react';
 
 const Cart = () => {
   const { isOpen, cartItems, sum } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+
+  const cartRef = useRef(null);
 
   const handlerCartClose = () => {
     dispatch(toggleCart());
@@ -17,10 +20,17 @@ const Cart = () => {
     dispatch(openModal());
   };
 
+  // когда элемент открыт, идет скролл к нему
+  useEffect(() => {
+    if (isOpen) {
+      cartRef.current.scrollIntoView({ behaviour: 'smooth' });
+    }
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   return (
-    <section className={cn(style.cart, style.open)}>
+    <section className={cn(style.cart, style.open)} ref={cartRef}>
       <div className={style.container}>
         <div className={style.header}>
           <h3 className={style.title}>Ваш заказ</h3>

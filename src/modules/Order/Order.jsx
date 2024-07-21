@@ -2,27 +2,46 @@ import { useSelector, useDispatch } from 'react-redux';
 import style from './Order.module.scss';
 import cn from 'classnames';
 import { closeModal } from '../../redux/modalSlice';
+import { useCallback, useEffect } from 'react';
 
 const Order = () => {
-  const isOrderReady = false;
-
-  const { isOpen } = useSelector((state) => state.modal);
   const dispatch = useDispatch();
+  const isOrderReady = false;
+  const { isOpen } = useSelector((state) => state.modal);
 
-  const handlerModalClose = () => {
+  const handleModalClose = useCallback(() => {
     dispatch(closeModal());
-  };
+  }, [dispatch]);
 
-  const handlerClose = ({ target, currentTarget }) => {
-    if (target === currentTarget) {
-      dispatch(closeModal());
+  const handleClose = useCallback(
+    ({ target, currentTarget }) => {
+      if (target === currentTarget) {
+        dispatch(closeModal());
+      }
+    },
+    [dispatch]
+  );
+
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') {
+        handleModalClose();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('keydown', handleEscape);
     }
-  };
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+    };
+  }, [isOpen, handleModalClose]);
 
   if (!isOpen) return null;
 
   return (
-    <div className={style.order} onClick={handlerClose}>
+    <div className={style.order} onClick={handleClose}>
       <div className={style.wrapper}>
         {isOrderReady ? (
           <>
@@ -134,7 +153,7 @@ const Order = () => {
         <button
           className={style.close}
           type="button"
-          onClick={handlerModalClose}
+          onClick={handleModalClose}
         >
           ×
         </button>

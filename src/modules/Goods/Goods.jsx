@@ -9,7 +9,7 @@ import { API_URL } from '../../const';
 const Goods = ({ title }) => {
   const dispatch = useDispatch();
   const { activeFilter, minPrice, maxPrice } = useSelector(
-    (state) => state.filter
+    (state) => state.filters
   );
 
   const {

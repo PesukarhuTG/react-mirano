@@ -3,11 +3,7 @@ import cn from 'classnames';
 import { Choices, FilterRadio } from '../';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  setActiveFilter,
-  setMinPrice,
-  setMaxPrice,
-} from '../../redux/filterSlice';
+import { changeType, changePrice } from '../../redux/filtersSlice';
 
 const filterTypes = [
   { value: 'bouquets', title: 'Цветы' },
@@ -20,7 +16,7 @@ const Filter = ({ setTitleGoods }) => {
   const [openChoice, setOpenChoice] = useState(-1);
 
   const { activeFilter, minPrice, maxPrice } = useSelector(
-    (state) => state.filter
+    (state) => state.filters
   );
 
   const handleChoicesToggle = (index) => {
@@ -29,24 +25,18 @@ const Filter = ({ setTitleGoods }) => {
 
   const handleTypeChange = ({ target }) => {
     const { value } = target;
-    dispatch(setActiveFilter(value));
+    dispatch(changeType(value));
     setTitleGoods(filterTypes.find((item) => item.value === value).title);
   };
 
   const handlePriceChange = ({ target }) => {
     const { value, name } = target;
-    if (name === 'minPrice') {
-      dispatch(setMinPrice(!isNaN(parseInt(value, 10)) ? value : ''));
-    }
-
-    if (name === 'maxPrice') {
-      dispatch(setMaxPrice(!isNaN(parseInt(value, 10)) ? value : ''));
-    }
+    dispatch(changePrice({ name, value }));
   };
 
   useEffect(() => {
     setOpenChoice(-1);
-    dispatch(setMinPrice('')), dispatch(setMaxPrice(''));
+    dispatch(changePrice('')), dispatch(changePrice(''));
     setTitleGoods(
       filterTypes.find((item) => item.value === activeFilter).title
     );

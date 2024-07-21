@@ -2,14 +2,14 @@ import { configureStore } from '@reduxjs/toolkit';
 import cartReducer from './cartSlice';
 import modalReducer from './modalSlice';
 import goodsReducer from './goodsSlice';
-import filterReducer from './filterSlice';
+import filtersReducer from './filtersSlice';
 
 const store = configureStore({
   reducer: {
     cart: cartReducer,
     modal: modalReducer,
     goods: goodsReducer,
-    filter: filterReducer,
+    filters: filtersReducer,
   },
 });
 

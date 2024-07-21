@@ -17,25 +17,24 @@ const initialState = {
   category: '',
 };
 
-const filterSlice = createSlice({
-  name: 'filter',
+const filtersSlice = createSlice({
+  name: 'filters',
   initialState,
   reducers: {
-    setActiveFilter(state, action) {
+    changeType(state, action) {
       state.activeFilter = action.payload;
+      state.minPrice = '';
+      state.maxPrice = '';
+      state.category = '';
     },
-    setMinPrice(state, action) {
-      state.minPrice = action.payload;
+    changePrice(state, action) {
+      state[action.payload.name] = action.payload.value;
     },
-    setMaxPrice(state, action) {
-      state.maxPrice = action.payload;
-    },
-    setCategory(state, action) {
+    changeCategory(state, action) {
       state.category = action.payload;
     },
   },
 });
 
-export const { setActiveFilter, setMinPrice, setMaxPrice, setCategory } =
-  filterSlice.actions;
-export default filterSlice.reducer;
+export const { changeType, changePrice, changeCategory } = filtersSlice.actions;
+export default filtersSlice.reducer;

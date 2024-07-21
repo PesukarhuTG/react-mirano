@@ -28,26 +28,26 @@ const Goods = ({ title }) => {
     content = <p>Идет загрузка товаров...</p>;
   }
 
-  if (goodsStatus === 'success') {
-    if (!goodsList.length) {
-      content = <p>К сожалению, по вашему запросу товары не найдены :/</p>;
-    } else {
-      content = (
-        <ul className={style.list}>
-          {goodsList.map((item) => (
-            <li className={style.item} key={item.id}>
-              <Card
-                id={item.id}
-                img={`${API_URL}/${item.photoUrl}`}
-                price={item.price}
-                title={item.name}
-                dateDelivery="сегодня в 14:00"
-              />
-            </li>
-          ))}
-        </ul>
-      );
-    }
+  if (goodsStatus === 'success' && goodsList.length) {
+    content = (
+      <ul className={style.list}>
+        {goodsList.map((item) => (
+          <li className={style.item} key={item.id}>
+            <Card
+              id={item.id}
+              img={`${API_URL}/${item.photoUrl}`}
+              price={item.price}
+              title={item.name}
+              dateDelivery="сегодня в 14:00"
+            />
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
+  if (!goodsList.length) {
+    content = <p>К сожалению, по вашему запросу товары не найдены :/</p>;
   }
 
   if (goodsStatus === 'failed') {

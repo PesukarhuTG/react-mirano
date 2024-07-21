@@ -13,14 +13,11 @@ const Order = () => {
     dispatch(closeModal());
   }, [dispatch]);
 
-  const handleClose = useCallback(
-    ({ target, currentTarget }) => {
-      if (target === currentTarget) {
-        dispatch(closeModal());
-      }
-    },
-    [dispatch]
-  );
+  const handleClose = ({ target, currentTarget }) => {
+    if (target === currentTarget) {
+      handleModalClose();
+    }
+  };
 
   useEffect(() => {
     const handleEscape = (e) => {

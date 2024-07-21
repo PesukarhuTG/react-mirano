@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { API_URL } from '../../const';
 
-const Goods = () => {
+const Goods = ({ title }) => {
   const dispatch = useDispatch();
   const { activeFilter, minPrice, maxPrice } = useSelector(
     (state) => state.filter
@@ -58,13 +58,7 @@ const Goods = () => {
     <section className={style.goods}>
       <div className={cn('container', style.container)}>
         <div className={style.box}>
-          <h2 className={style.title}>
-            {activeFilter === 'bouquets'
-              ? 'Цветы'
-              : activeFilter === 'toys'
-              ? 'Игрушки'
-              : 'Открытки'}
-          </h2>
+          <h2 className={style.title}>{title}</h2>
           {content}
         </div>
         <Cart />

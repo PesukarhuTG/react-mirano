@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Header,
   Hero,
@@ -13,6 +13,8 @@ import { registerCart } from './redux/cartSlice';
 
 export const App = () => {
   const dispatch = useDispatch();
+
+  const [titleGoods, setTitleGoods] = useState('');
 
   useEffect(() => {
     // тк нельзя внутри использовать await перед dispatch, создаем функцию
@@ -29,8 +31,8 @@ export const App = () => {
       <Header />
       <main>
         <Hero />
-        <Filter />
-        <Goods />
+        <Filter setTitleGoods={setTitleGoods} />
+        <Goods title={titleGoods} />
         <Subscribe />
       </main>
       <Footer />

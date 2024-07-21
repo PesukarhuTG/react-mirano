@@ -15,7 +15,7 @@ const filterTypes = [
   { value: 'postcards', title: 'Открытки' },
 ];
 
-const Filter = () => {
+const Filter = ({ setTitleGoods }) => {
   const dispatch = useDispatch();
   const [openChoice, setOpenChoice] = useState(-1);
 
@@ -30,6 +30,7 @@ const Filter = () => {
   const handleTypeChange = ({ target }) => {
     const { value } = target;
     dispatch(setActiveFilter(value));
+    setTitleGoods(filterTypes.find((item) => item.value === value).title);
   };
 
   const handlePriceChange = ({ target }) => {
@@ -46,7 +47,10 @@ const Filter = () => {
   useEffect(() => {
     setOpenChoice(-1);
     dispatch(setMinPrice('')), dispatch(setMaxPrice(''));
-  }, [dispatch, activeFilter]);
+    setTitleGoods(
+      filterTypes.find((item) => item.value === activeFilter).title
+    );
+  }, [dispatch, activeFilter, setTitleGoods]);
 
   return (
     <section className={style.filter}>

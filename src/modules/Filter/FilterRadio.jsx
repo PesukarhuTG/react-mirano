@@ -1,7 +1,7 @@
 import style from './FilterRadio.module.scss';
 import cn from 'classnames';
 
-const FilterRadio = ({ handleTypeChange, activeFilter, value, title }) => {
+const FilterRadio = ({ handleTypeChange, type, value, title }) => {
   return (
     <>
       <input
@@ -10,7 +10,7 @@ const FilterRadio = ({ handleTypeChange, activeFilter, value, title }) => {
         name="type"
         value={value}
         id={value}
-        defaultChecked={activeFilter === value}
+        defaultChecked={type === value}
         onChange={handleTypeChange}
       />
       <label

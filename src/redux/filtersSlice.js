@@ -11,7 +11,7 @@ export const fetchFilterType = createAsyncThunk(
 );
 
 const initialState = {
-  activeFilter: 'bouquets',
+  type: 'bouquets',
   minPrice: '',
   maxPrice: '',
   category: '',
@@ -22,7 +22,7 @@ const filtersSlice = createSlice({
   initialState,
   reducers: {
     changeType(state, action) {
-      state.activeFilter = action.payload;
+      state.type = action.payload;
       state.minPrice = '';
       state.maxPrice = '';
       state.category = '';

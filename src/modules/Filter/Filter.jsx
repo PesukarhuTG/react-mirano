@@ -15,9 +15,7 @@ const Filter = ({ setTitleGoods }) => {
   const dispatch = useDispatch();
   const [openChoice, setOpenChoice] = useState(-1);
 
-  const { activeFilter, minPrice, maxPrice } = useSelector(
-    (state) => state.filters
-  );
+  const filters = useSelector((state) => state.filters);
 
   const handleChoicesToggle = (index) => {
     setOpenChoice(openChoice === index ? null : index);
@@ -38,9 +36,9 @@ const Filter = ({ setTitleGoods }) => {
     setOpenChoice(-1);
     dispatch(changePrice('')), dispatch(changePrice(''));
     setTitleGoods(
-      filterTypes.find((item) => item.value === activeFilter).title
+      filterTypes.find((item) => item.value === filters.type).title
     );
-  }, [dispatch, activeFilter, setTitleGoods]);
+  }, [dispatch, filters.type, setTitleGoods]);
 
   return (
     <section className={style.filter}>
@@ -52,7 +50,7 @@ const Filter = ({ setTitleGoods }) => {
               <FilterRadio
                 key={item.value}
                 handleTypeChange={handleTypeChange}
-                activeFilter={activeFilter}
+                type={filters.type}
                 {...item}
               />
             ))}
@@ -70,7 +68,7 @@ const Filter = ({ setTitleGoods }) => {
                   type="text"
                   name="minPrice"
                   placeholder="от"
-                  defaultValue={minPrice}
+                  defaultValue={filters.minPrice}
                   onChange={handlePriceChange}
                 />
                 <input
@@ -78,7 +76,7 @@ const Filter = ({ setTitleGoods }) => {
                   type="text"
                   name="maxPrice"
                   placeholder="до"
-                  defaultValue={maxPrice}
+                  defaultValue={filters.maxPrice}
                   onChange={handlePriceChange}
                 />
               </fieldset>
